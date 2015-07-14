@@ -21,9 +21,9 @@
 	
 	function showtables() {
 		$query = "SHOW tables";
-		$result = mysql_query($query, $dbconn);
-		echo mysql_num_rows($result) . ' tables returned\n';
-		while ($row  mysql_fetch_array($result)) {
+		$result = @ mysql_query($query, $dbconn);
+		echo @ mysql_num_rows($result) . ' tables returned\n';
+		while ($row = @ mysql_fetch_array($result)) {
 			echo '\n'.$row["Tables_in_winestore"];
 		}
 	}
@@ -35,14 +35,14 @@
                          region.region_name 
                   FROM   region";
         // Run query
-        $result = mysql_query($query, $dbconn);
+        $result = @ mysql_query($query, $dbconn);
 		
         // Check for regions
-        $rowsFound = mysql_num_rows($result);
+        $rowsFound = @ mysql_num_rows($result);
         if ($rowsFound > 0) {
             print "\n<select name=\"regions\">";
             // Add regions to drop down menu
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = @ mysql_fetch_array($result)) {
                 print "\n<option value=\"{$row["region_id"]}\">{$row["region_name"]}</option>";
             }
             print "\n</select>";
