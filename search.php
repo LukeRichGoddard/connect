@@ -1,5 +1,6 @@
 <?php
-	require_once('db.php');
+	error_reporting(E_ALL);
+    require_once('db.php');
 	if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW)) {
 		echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
 		exit;
