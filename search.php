@@ -16,8 +16,8 @@
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
         // Query
-		$query = "SELECT region.regionID,
-                         region.regionName 
+		$query = "SELECT region.region_id,
+                         region.region_name 
                   FROM   region";
         // Run query
         if (!($result = @ mysql_query($query, $dbconn))) {
@@ -25,7 +25,18 @@
         }
         // Check for regions
         $rowsFound = @ mysql_num_rows($result);
-        print "{$rowsFound} records found<br />";
+        if ($rowsFound > 0) {
+            print "\n<select name=\"regions\">";
+            print "\n<option value=\"All\">All</option>";
+            // Add regions to drop down menu
+            while ($row = @ mysql_fetch_array($result)) {
+                print "\n<option value=\"{$row["regionID"]}\">{$row["regionName"]}</option>";
+            }
+            print "\n</select>";
+        } else {
+            // Error: No regions found
+            print "<p>Error: no regions found in " . DB_NAME . "</p>";
+        }
 	}
 ?>
 <?xml version="1.0" encoding="utf-8"?>
