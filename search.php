@@ -51,7 +51,7 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  <?php init(); showtables(); ?>
+  <?php init(); // showtables(); ?>
   <form action="action.php" method="POST">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
