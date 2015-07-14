@@ -10,6 +10,7 @@
         die();
     }
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
+    print_r($dbh);
 	
 	function showtables() {
 		$stmt = $dbh->query("SHOW tables");
