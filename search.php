@@ -13,9 +13,19 @@
 	}
 	echo '<!-- Connected to database ' . DB_NAME . ' -->';
 	
-  function showerror() {
-     die("Error " . mysql_errno() . " : " . mysql_error());
-  }
+	function showerror() {
+		die("Error " . mysql_errno() . " : " . mysql_error());
+	}
+	
+	function showtables() {
+		$query = "SHOW tables";
+		$result = @ mysql_query($query, $dbconn);
+		echo @ mysql_num_rows($result) . ' tables returned\n';
+		while ($row = @ mysql_fetch_array($result)) {
+			echo '\n'.$row["Tables_in_winestore"];
+		}
+	}
+	
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
         // Query
@@ -49,6 +59,7 @@
   <title>Search Winestore</title>
 </head>
 <body>
+  <?php showtables(); ?>
   <form action="action.php" method="POST">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
@@ -58,7 +69,7 @@
   <br />
   <form action="action.php" method="POST">
     <br />Search by region:
-    <?php buildRegionMenu() ?>
+    <?php buildRegionMenu(); ?>
     <br /><input type="submit" value="Search" />
   </form>
 </body>
