@@ -12,7 +12,7 @@
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
     print_r($dbh);
 	
-	function showtables() {
+	function showtables($dbh) {
 		$stmt = $dbh->query("SHOW tables");
         $count = $stmt->rowCount();
         print("$count tables found. \n");
@@ -36,7 +36,7 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  <?php showtables(); ?>
+  <?php showtables($dbh); ?>
   <form action="action.php" method="POST">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
