@@ -23,7 +23,7 @@
         // Prepare query
         $result = $dbh->query("SELECT * FROM region");
         // Run query and check for regions
-        if ($result->rowCount > 0) {
+        if ($result->rowCount() > 0) {
             print "\n<select name=\"regions\">";
             // Add regions to drop down menu
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
