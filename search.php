@@ -30,10 +30,9 @@
         $rowsFound = @ mysql_num_rows($result);
         if ($rowsFound > 0) {
             print "\n<select name=\"regions\">";
-            print "\n<option value=\"All\">All</option>";
             // Add regions to drop down menu
             while ($row = @ mysql_fetch_array($result)) {
-                print "\n<option value=\"{$row["regionID"]}\">{$row["regionName"]}</option>";
+                print "\n<option value=\"{$row["region_id"]}\">{$row["region_name"]}</option>";
             }
             print "\n</select>";
         } else {
