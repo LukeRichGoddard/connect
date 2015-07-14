@@ -13,7 +13,7 @@
 	}
 	
 	function showtables() {
-		$query = $dbh->prepare('SHOW tables');
+		$stmt = $dbh->prepare("SHOW tables");
         print("$count tables found. \n");
 	}
 	
