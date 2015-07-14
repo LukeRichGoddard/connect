@@ -14,12 +14,8 @@
 	
 	function showtables() {
 		$query = $dbh->prepare("SHOW tables");
-		if ($query->execute()) {
-			while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-				print_r($row);
-                print("\n");
-			}
-		}
+		$query->execute();
+        echo $query->rowCount() . 'rows found. \n';
 	}
 	
 	// Build drop down menu for selecting regions
@@ -56,7 +52,7 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  <?php init(); // showtables(); ?>
+  <?php init(); showtables(); ?>
   <form action="action.php" method="POST">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
