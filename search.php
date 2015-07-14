@@ -1,17 +1,19 @@
 <?php
-	error_reporting(E_ALL);
-    require_once('db.php');
-	if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW)) {
-		echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
-		exit;
+	function init() {
+		error_reporting(E_ALL);
+		require_once('db.php');
+		if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW)) {
+			echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
+			exit;
+		}
+		echo '<!-- Connected to mysql -->';
+		if(!mysql_select_db(DB_NAME, $dbconn)) {
+			echo '<h3>Error</h3>Could not use database ' . DB_NAME . '<br />';
+			echo mysql_error() . '<br />';
+			exit;
+		}
+		echo '<!-- Connected to database ' . DB_NAME . ' -->';
 	}
-	echo '<!-- Connected to mysql -->';
-	if(!mysql_select_db(DB_NAME, $dbconn)) {
-		echo '<h3>Error</h3>Could not use database ' . DB_NAME . '<br />';
-		echo mysql_error() . '<br />';
-		exit;
-	}
-	echo '<!-- Connected to database ' . DB_NAME . ' -->';
 	
 	function showerror() {
 		die("Error " . mysql_errno() . " : " . mysql_error());
@@ -59,7 +61,7 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  <?php showtables(); ?>
+  <?php init(); showtables(); ?>
   <form action="action.php" method="POST">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
