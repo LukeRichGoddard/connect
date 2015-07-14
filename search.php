@@ -14,14 +14,14 @@
 	echo 'Connected to database ' . DB_NAME . '<br />';
 	
 	// Build drop down menu for selecting regions
-	function buildRegionMenu($connection) {
+	function buildRegionMenu() {
         // Query
 		$query = "SELECT region.regionID,
                          region.regionName 
                   FROM   region";
         // Run query
-        if (!($result = @ mysql_query($query, $connection))) {
-            die("Error ".mysql_errno().": ".mysql_error()));
+        if (!($result = @ mysql_query($query, $dbconn))) {
+            die("Error " . mysql_errno() . ": " . mysql_error());
         }
         // Check for regions
         $rowsFound = @ mysql_num_rows($result);
@@ -46,7 +46,7 @@
   <br />
   <form action="action.php" method="POST">
     <br />Search by region:
-    <?php buildRegionMenu($dbconn) ?>
+    <?php buildRegionMenu() ?>
     <br /><input type="submit" value="Search" />
   </form>
 </body>
