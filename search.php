@@ -12,27 +12,26 @@
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
     print_r($dbh);
 	
-	function showtables($dbh) {
-		$stmt = $dbh->query("SHOW tables");
-        $count = $stmt->rowCount();
-        print("$count tables found. \n");
-	}
-	
 	// Build drop down menu for selecting regions
 	function buildRegionMenu($dbh) {
-        // Prepare query
-        $result = $dbh->query("SELECT * FROM region");
-        // Run query and check for regions
-        if ($result->rowCount() > 0) {
-            print "\n<select name=\"regions\">";
-            // Add regions to drop down menu
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "\n<option value=\"".$row['region_id']."\">".$row['region_name']."</option>";
+        try {
+            // Prepare query
+            $result = $dbh->query("SELECT * FROM region");
+            // Run query and check for regions
+            if ($result->rowCount() > 0) {
+                print "\n<select name=\"regions\">";
+                // Add regions to drop down menu
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    echo "\n<option value=\"".$row['region_id']."\">".$row['region_name']."</option>";
+                }
+                print "\n</select>";
+            } else {
+                // Error: No regions found
+                print "<p>Error: no regions found in " . DB_NAME . "</p>";
             }
-            print "\n</select>";
-        } else {
-            // Error: No regions found
-            print "<p>Error: no regions found in " . DB_NAME . "</p>";
+        } catch (PDOException $e) {
+            echo '<h3>Error</h3><p>PDO Exception occurred</p><br />';
+			die();
         }
 	}
 ?>
@@ -44,7 +43,6 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  <?php showtables($dbh); ?>
   <form action="action.php" method="POST">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
