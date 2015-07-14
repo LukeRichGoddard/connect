@@ -5,13 +5,13 @@
 		echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
 		exit;
 	}
-	echo 'Connected to mysql <br />';
+	echo '<!-- Connected to mysql -->';
 	if(!mysql_select_db(DB_NAME, $dbconn)) {
 		echo '<h3>Error</h3>Could not use database ' . DB_NAME . '<br />';
 		echo mysql_error() . '<br />';
 		exit;
 	}
-	echo 'Connected to database ' . DB_NAME . '<br />';
+	echo '<!-- Connected to database ' . DB_NAME . ' -->';
 	
   function showerror() {
      die("Error " . mysql_errno() . " : " . mysql_error());
@@ -23,9 +23,8 @@
                          region.region_name 
                   FROM   region";
         // Run query
-        if (!($result = @ mysql_query($query, $dbconn))) {
-            showerror();
-        }
+        $result = @ mysql_query($query, $dbconn);
+		
         // Check for regions
         $rowsFound = @ mysql_num_rows($result);
         if ($rowsFound > 0) {
