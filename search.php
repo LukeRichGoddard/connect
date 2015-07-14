@@ -15,7 +15,17 @@
 	
 	// Build drop down menu for selecting regions
 	function buildRegionMenu($connection) {
-        
+        // Query
+		$query = "SELECT region.regionID,
+                         region.regionName 
+                  FROM   region";
+        // Run query
+        if (!($result = @ mysql_query($query, $connection))) {
+            die("Error ".mysql_errno().": ".mysql_error()));
+        }
+        // Check for regions
+        $rowsFound = @ mysql_num_rows($result);
+        print "{$rowsFound} records found<br />";
 	}
 ?>
 <?xml version="1.0" encoding="utf-8"?>
