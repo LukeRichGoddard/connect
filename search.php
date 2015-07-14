@@ -24,27 +24,32 @@
 	
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
-        // Prepare query
-		$query = $dbh->prepare("SELECT region.region_id,
-                                       region.region_name 
-                                FROM   region");
-        // Run query and check for regions
-        if ($query->execute()) {
-            print "\n<select name=\"regions\">";
-            // Add regions to drop down menu
-            while ($row = $query->fetch()) {
-                print "\n<option value=\"{$row->region_id}\">{$row->region_name}</option>";
+        try {
+            // Prepare query
+            $query = $dbh->prepare("SELECT region.region_id,
+                                           region.region_name 
+                                    FROM   region");
+            // Run query and check for regions
+            if ($query->execute()) {
+                print "\n<select name=\"regions\">";
+                // Add regions to drop down menu
+                while ($row = $query->fetch()) {
+                    print "\n<option value=\"{$row->region_id}\">{$row->region_name}</option>";
+                }
+                print "\n</select>";
+            } else {
+                // Error: No regions found
+                print "<p>Error: no regions found in " . DB_NAME . "</p>";
             }
-            print "\n</select>";
-        } else {
-            // Error: No regions found
-            print "<p>Error: no regions found in " . DB_NAME . "</p>";
         }
+        catch (PDOException $e) {
+            echo '<h3>Error</h3><p>PDO Exception occurred</p><br />';
+			die();
+        } 
 	}
 ?>
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
