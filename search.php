@@ -2,48 +2,37 @@
 	function init() {
 		error_reporting(E_ALL);
 		require_once('db.php');
-		if(!$dbconn = mysql_connect(DB_HOST, DB_USER, DB_PW)) {
+		try {
+			$dbh = new PDO('mysql:host=localhost;dbname=winestore', DB_USER, DB_PW);
+		}
+		catch (PDOException $e) {
 			echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
-			exit;
+			die();
 		}
-		echo '<!-- Connected to mysql -->';
-		if(!mysql_select_db(DB_NAME, $dbconn)) {
-			echo '<h3>Error</h3>Could not use database ' . DB_NAME . '<br />';
-			echo mysql_error() . '<br />';
-			exit;
-		}
-		echo '<!-- Connected to database ' . DB_NAME . ' -->';
-	}
-	
-	function showerror() {
-		die("Error " . mysql_errno() . " : " . mysql_error());
+		echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
 	}
 	
 	function showtables() {
-		$query = "SHOW tables";
-		$result = @ mysql_query($query, $dbconn);
-		echo @ mysql_num_rows($result) . ' tables returned\n';
-		while ($row = @ mysql_fetch_array($result)) {
-			echo '\n'.$row["Tables_in_winestore"];
+		$query = $dbh->prepare("SHOW tables");
+		if ($query->execute()) {
+			while ($row = $query->fetch()) {
+				print_r($row);
+			}
 		}
 	}
 	
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
-        // Query
-		$query = "SELECT region.region_id,
-                         region.region_name 
-                  FROM   region";
-        // Run query
-        $result = @ mysql_query($query, $dbconn);
-		
-        // Check for regions
-        $rowsFound = @ mysql_num_rows($result);
-        if ($rowsFound > 0) {
+        // Prepare query
+		$query = $dbh->prepare("SELECT region.region_id,
+                                       region.region_name 
+                                FROM   region");
+        // Run query and check for regions
+        if ($query->execute()) {
             print "\n<select name=\"regions\">";
             // Add regions to drop down menu
-            while ($row = @ mysql_fetch_array($result)) {
-                print "\n<option value=\"{$row["region_id"]}\">{$row["region_name"]}</option>";
+            while ($row = $query->fetch()) {
+                print "\n<option value=\"{$row->region_id}\">{$row->region_name}</option>";
             }
             print "\n</select>";
         } else {
@@ -76,3 +65,4 @@
   </form>
 </body>
 </html>
+<?php $dbh = null; ?>
