@@ -24,9 +24,9 @@
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
         // Prepare query
-		$query = $dbh->prepare("SELECT region.region_id,
+		$query = $dbh->prepare('SELECT region.region_id,
                                        region.region_name 
-                                FROM   region");
+                                FROM   region');
         // Run query and check for regions
         if ($query->execute()) {
             print "\n<select name=\"regions\">";
