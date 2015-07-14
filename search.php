@@ -15,8 +15,9 @@
 	function showtables() {
 		$query = $dbh->prepare("SHOW tables");
 		if ($query->execute()) {
-			while ($row = $query->fetch()) {
+			while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 				print_r($row);
+                print("\n");
 			}
 		}
 	}
@@ -24,9 +25,9 @@
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
         // Prepare query
-		$query = $dbh->prepare('SELECT region.region_id,
+		$query = $dbh->prepare("SELECT region.region_id,
                                        region.region_name 
-                                FROM   region');
+                                FROM   region");
         // Run query and check for regions
         if ($query->execute()) {
             print "\n<select name=\"regions\">";
