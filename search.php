@@ -4,7 +4,7 @@
 		error_reporting(E_ALL);
 		require_once('db.php');
 		try {
-			$dbh = new PDO('mysql:host=localhost;dbname=winestore', DB_USER, DB_PW);
+			$dbh = new PDO('mysql:host=localhost;dbname=winestore;charset=utf8', DB_USER, DB_PW);
 		}
 		catch (PDOException $e) {
 			echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
@@ -14,7 +14,8 @@
 	}
 	
 	function showtables() {
-		$stmt = $dbh->prepare("SHOW tables");
+		$stmt = $dbh->query("SHOW tables");
+        $count = $stmt->rowCount();
         print("$count tables found. \n");
 	}
 	
