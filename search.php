@@ -14,6 +14,33 @@
 		exit;
 	}
 	echo 'Connected to database ' . DB_NAME . '<br />';
+	
+	// Build drop down menu for selecting regions
+	function buildRegionMenu($connection) {
+        // Query
+		$query = "SELECT region.regionID,
+                         region.regionName 
+                  FROM   region";
+        // Run query
+        if (!($result = @ mysql_query($query, $connection))) {
+            die("Error ".mysql_errno().": ".mysql_error()));
+        }
+        
+        // Check for regions
+        $rowsFound = @ mysql_num_rows($result);
+        if ($rowsFound > 0) {
+            print "\n<select name=\"regions\">";
+            print "\n<option value=\"All\">All</option>";
+            // Add regions to drop down menu
+            while ($row = @ mysql_fetch_array($result)) {
+                print "\n<option value=\"{$row["regionID"]}\">{$row["regionName"]}</option>";
+            }
+            print "\n</select>";
+        } else {
+            // Error: No regions found
+            print "<p>Error: no regions found in " . DB_NAME . "</p>";
+        }
+	}
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,8 +57,7 @@
   <br />
   <form action="action.php" method="POST">
     <br />Search by region:
-    <input type="text" name="regionName" value="All" />
-      (type All to see all regions)
+    <?php buildRegionMenu($connection) ?>
     <br /><input type="submit" value="Search" />
   </form>
 </body>
