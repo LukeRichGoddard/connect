@@ -13,6 +13,9 @@
 	}
 	echo 'Connected to database ' . DB_NAME . '<br />';
 	
+  function showerror() {
+     die("Error " . mysql_errno() . " : " . mysql_error());
+  }
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
         // Query
@@ -21,7 +24,7 @@
                   FROM   region";
         // Run query
         if (!($result = @ mysql_query($query, $dbconn))) {
-            die("Error " . mysql_errno() . ": " . mysql_error());
+            showerror();
         }
         // Check for regions
         $rowsFound = @ mysql_num_rows($result);
