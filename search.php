@@ -13,9 +13,10 @@
 	}
 	
 	function showtables() {
-		$query = $dbh->prepare("SHOW tables");
+		$query = $dbh->prepare('SHOW tables');
 		$query->execute();
-        echo $query->rowCount() . 'rows found. \n';
+        $count = $query->rowCount();
+        print("$count tables found. \n");
 	}
 	
 	// Build drop down menu for selecting regions
