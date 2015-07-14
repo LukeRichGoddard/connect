@@ -22,22 +22,6 @@
 	// Build drop down menu for selecting regions
 	function buildRegionMenu() {
         try {
-            // Prepare query
-            $query = $dbh->prepare("SELECT region.region_id,
-                                           region.region_name 
-                                    FROM   region");
-            // Run query and check for regions
-            if ($query->execute()) {
-                print "\n<select name=\"regions\">";
-                // Add regions to drop down menu
-                while ($row = $query->fetch()) {
-                    print "\n<option value=\"{$row->region_id}\">{$row->region_name}</option>";
-                }
-                print "\n</select>";
-            } else {
-                // Error: No regions found
-                print "<p>Error: no regions found in " . DB_NAME . "</p>";
-            }
         }
         catch (PDOException $e) {
             echo '<h3>Error</h3><p>PDO Exception occurred</p><br />';
