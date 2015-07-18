@@ -47,11 +47,6 @@
                     LIKE :wineryNameBind ";
     }
     
-    // TESTING
-    if(DEBUG_MODE) {
-        fatalError("Query: {$search}");
-    }
-    
     // Execute query
     try {
         $statement = $dbh->prepare($search);
@@ -81,6 +76,12 @@
     
     // Close database connection
     $dbh = null;
+    
+    // TESTING
+    if(DEBUG_MODE) {
+        echo '<pre>' . print_r($results) . '</pre>';
+        fatalError("Query: {$search}");
+    }
     
     // Redirect to Results page
     header("Location: {$resultsURL}");
