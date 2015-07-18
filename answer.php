@@ -153,7 +153,7 @@
         }
         
         if ($minOrder != 0 or is_null($minOrder)) {
-            $statement->bindParam(':minOrderBind', $$minOrder, PDO::PARAM_INT);
+            $statement->bindParam(':minOrderBind', $minOrder, PDO::PARAM_INT);
         }
         
         if ($minStock != 0 or is_null($minStock)) {
