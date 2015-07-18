@@ -33,7 +33,7 @@
         // Prepare all query
         $search = "SELECT * 
                    FROM   wine
-                   WHERE  wine.wine_id = * ";
+                   WHERE  1 = 1 ";
     } else {
         // Prepare specific query
         $search = "SELECT * 
