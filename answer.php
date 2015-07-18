@@ -36,6 +36,9 @@ if (!isset(searchMethod)) {
 // Sanitise searchMethod
 $searchMethod = sanitise($_GET["searchMethod"]);
 
+// TEMP: just checking
+echo 'Search Method ' . $searchMethod . ' selected.';
+
 // Select method for search
 switch ($searchMethod) {
     
