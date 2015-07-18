@@ -81,10 +81,10 @@
     $dbh = null;
     
     // TESTING
-    //if(DEBUG_MODE) {
-    //    echo '<pre>' . print_r($result) . '</pre>';
+    if(DEBUG_MODE) {
+        echo '<pre>' . print_r($result) . '</pre>';
     //    fatalError("Query: {$search}");
-    //}
+    }
     
     // Redirect to Results page
     header("Location: {$resultsURL}");
