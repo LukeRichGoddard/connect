@@ -51,58 +51,69 @@
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
-        $search .= " AND wine.wine_name LIKE :wineNameBind ";
+        $search .= " 
+                AND wine.wine_name LIKE :wineNameBind ";
     }
     
     // wineryNameBind
     if (strcmp($wineryName, '%All%') != 0) {
-        $search .= " AND winery.winery_name LIKE :wineryNameBind ";
+        $search .= " 
+                AND winery.winery_name LIKE :wineryNameBind ";
     }
     
     // regionBind
     if ($regionID != 1) {
-        $search .= " AND region.region_id = :regionBind ";
+        $search .= " 
+                AND region.region_id = :regionBind ";
     }
     
     // grapeVariety
     if ($grapeVariety != 0) {
-        $search .= " AND grape_variety.variety_id = :grapeVarietyBind ";
+        $search .= " 
+                AND grape_variety.variety_id = :grapeVarietyBind ";
     }
     
     // minYear
     if ($minYear != 0 or is_null($minYear)) {
-        $search .= " AND wine.year >= :minYearBind ";
+        $search .= " 
+                AND wine.year >= :minYearBind ";
     }
     
     // maxYear
     if ($maxYear != 0 or is_null($maxYear)) {
-        $search .= " AND wine.year <= :maxYearBind ";
+        $search .= " 
+                AND wine.year <= :maxYearBind ";
     }
     
     // minOrder
     if ($minOrder != 0 or is_null($minOrder)) {
-        $search .= " AND FLOOR(SUM(items.qty)/COUNT(distinct grape_variety.variety)) >= :minOrderBind ";
+        $search .= " 
+                AND FLOOR(SUM(items.qty)/COUNT(distinct grape_variety.variety)) >= :minOrderBind ";
     }
     
     // minStock
     if ($minStock != 0 or is_null($minStock)) {
-        $search .= " AND inventory.on_hand >= :minStockBind ";
+        $search .= " 
+                AND inventory.on_hand >= :minStockBind ";
     }
     
     // minCost
     if ($minCost != 0 or is_null($minCost)) {
-        $search .= " AND inventory.cost >= :minCostBind ";
+        $search .= " 
+                AND inventory.cost >= :minCostBind ";
     }
     
     // maxCost
     if ($maxCost != 0 or is_null($maxCost)) {
-        $search .= " AND inventory.cost <= :maxCostBind ";
+        $search .= " 
+                AND inventory.cost <= :maxCostBind ";
     }
     
-    // Limit to 100 wines
-    $search .= " GROUP BY wine.wine_id
-                 ORDER BY wine.wine_id 
-                 LIMIT 100";
+    // Limit to 50 wines
+    $search .= " 
+                GROUP BY wine.wine_id
+                ORDER BY wine.wine_id 
+                LIMIT 50";
     
     // Execute query
     try {
