@@ -15,16 +15,9 @@
     catch (PDOException $e) {
         fatalError("Could not connect to database");
     }
-
-    // Ensure searchMethod exists
-    if (!isset($_GET["searchMethod"])) {
-        fatalError("Search method not found");
-    }
     
     // Sanitise searchMethod
     $searchMethod = sanitise($_GET["searchMethod"]);
-    
-    
     
     // Validate input
     // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
