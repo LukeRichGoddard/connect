@@ -13,6 +13,27 @@
     
     // wineNameSearch
     function wineNameSearch() {
+        // Validate input
+        $wineName = sanitise($_GET["wineName"])
+        
+        // Prepare query
+        $query = 'SELECT * 
+                  FROM   wine
+                  WHERE  wine.wine_name
+                  LIKE   "%:wineName%"';
+        
+        // Execute query
+        try {
+            $statement = $dbh->prepare($query);
+            $statement->execute(array(':wineName' => $wineName));
+            $result = $statement->fetchAll();
+            
+        } catch (PDOException $e) {
+            fatalError("PDO Exception occurred");
+        }
+        
+        // Prepare results for URL
+        print_r($result);
         
     }
     
