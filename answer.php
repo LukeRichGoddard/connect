@@ -32,15 +32,20 @@
     // Prepare search query
     $search = " SELECT wine.wine_id, 
                        wine.wine_name, 
-                       wine.year,
-                       wine_type.wine_type,
                        group_concat(grape_variety.variety
-                       order by wine_variety.id ASC SEPARATOR ' ') AS wine_variety
-                FROM   wine, wine_type, wine_variety, grape_variety
+                           order by wine_variety.id ASC SEPARATOR ' ') AS wine_variety,
+                       wine.year,
+                       winery.winery_name,
+                       region.region_name,
+                       MAX(inventory.cost) AS cost,
+                       SUM(inventory.on_hand) AS on_hand
+                FROM   wine, wine_variety, grape_variety, winery, region, inventory
                 WHERE  wine.wine_id = wine_variety.wine_id
-                AND    wine.wine_type = wine_type.wine_type_id
+                AND    wine.winery_id = winery.winery_id
+                AND    winery.region_id = region.region_id
                 AND    wine_variety.variety_id = grape_variety.variety_id
-                GROUP BY wine.wine_id;";
+                AND    wine.wine_id = inventory.wine_id
+                GROUP BY wine.wine_id ";
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
