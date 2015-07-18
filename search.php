@@ -10,7 +10,7 @@
         die();
     }
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
-	
+	deliberate_bug;
 	// Build drop down menu for selecting regions
 	function buildRegionMenu($dbh) {
         try {
