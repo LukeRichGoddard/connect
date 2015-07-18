@@ -94,7 +94,7 @@
     // minStock
     if ($minStock != 0 or is_null($minStock)) {
         $search .= " 
-                AND SUM(inventory.on_hand) >= :minStockBind ";
+                AND on_hand >= :minStockBind ";
     }
     
     // minCost
