@@ -88,7 +88,7 @@
     // minOrder
     if ($minOrder != 0 or is_null($minOrder)) {
         $search .= " 
-                AND FLOOR(SUM(items.qty)/COUNT(distinct grape_variety.variety)) >= :minOrderBind ";
+                AND total_sold >= :minOrderBind ";
     }
     
     // minStock
