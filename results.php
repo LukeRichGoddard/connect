@@ -3,7 +3,7 @@
     
     if(isset($_GET["results"])) {
         // Parse URL encoding
-        parse_str($_GET["results"], $results)
+        parse_str($_GET["results"], $results);
         
         // Output results
         echo '<pre>';
