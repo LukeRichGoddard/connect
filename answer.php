@@ -51,14 +51,52 @@
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
-        $search .= " AND wine.wine_name
-                   LIKE :wineNameBind ";
+        $search .= " AND wine.wine_name LIKE :wineNameBind ";
     }
     
     // wineryNameBind
     if (strcmp($wineryName, '%All%') != 0) {
-        $search .= " AND winery.winery_name
-                    LIKE :wineryNameBind ";
+        $search .= " AND winery.winery_name LIKE :wineryNameBind ";
+    }
+    
+    // regionBind
+    if ($regionID != 0) {
+        $search .= " AND region.region_id = :regionBind ";
+    }
+    
+    // grapeVariety
+    if ($grapeVariety != 0) {
+        $search .= " AND grape_variety.variety_id = :grapeVarietyBind ";
+    }
+    
+    // minYear
+    if ($minYear != 0 or is_null($minYear)) {
+        $search .= " AND wine.year >= :minYearBind ";
+    }
+    
+    // maxYear
+    if ($maxYear != 0 or is_null($maxYear)) {
+        $search .= " AND wine.year <= :maxYearBind ";
+    }
+    
+    // minOrder
+    if ($minOrder != 0 or is_null($minOrder)) {
+        $search .= " AND FLOOR(SUM(items.qty)/COUNT(distinct grape_variety.variety)) >= :minOrderBind ";
+    }
+    
+    // minStock
+    if ($minStock != 0 or is_null($minStock)) {
+        $search .= " AND inventory.on_hand >= :minStockBind ";
+    }
+    
+    // minCost
+    if ($minCost != 0 or is_null($minCost)) {
+        $search .= " AND inventory.cost >= :minCostBind ";
+    }
+    
+    // maxCost
+    if ($maxCost != 0 or is_null($maxCost)) {
+        $search .= " AND inventory.cost <= :maxCostBind ";
     }
     
     // Limit to 100 wines
@@ -78,6 +116,38 @@
             $statement->bindParam(':wineryNameBind', $wineryName, PDO::PARAM_STR, 100+2);
         }
         
+        if ($regionID != 0) {
+             $statement->bindParam(':regionBind', $wineryName, PDO::PARAM_INT);
+        }
+        
+        if ($grapeVariety != 0) {
+            $statement->bindParam(':grapeVarietyBind', $grapeVariety, PDO::PARAM_INT);
+        }
+    
+        if ($minYear != 0 or is_null($minYear)) {
+            $statement->bindParam(':minYearBind', $minYear, PDO::PARAM_INT);
+        }
+        
+        if ($maxYear != 0 or is_null($maxYear)) {
+            $statement->bindParam(':maxYearBind', $maxYear, PDO::PARAM_INT);
+        }
+        
+        if ($minOrder != 0 or is_null($minOrder)) {
+            $statement->bindParam(':minOrderBind', $$minOrder, PDO::PARAM_INT);
+        }
+        
+        if ($minStock != 0 or is_null($minStock)) {
+            $statement->bindParam(':minStockBind', $minStock, PDO::PARAM_INT);
+        }
+        
+        if ($minCost != 0 or is_null($minCost)) {
+            $statement->bindParam(':minCostBind', $minCost, PDO::PARAM_STR);
+        }
+        
+        if ($maxCost != 0 or is_null($maxCost)) {
+            $statement->bindParam(':maxCostBind', $maxCost, PDO::PARAM_STR);
+        }
+    
         $statement->execute();
         
         // Debugging
