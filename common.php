@@ -2,7 +2,7 @@
     $debug_mode = true;
     
     // Show errors in debug mode
-    if($debug_mode) {
+    if ($debug_mode) {
         ini_set('display_errors',1);
         error_reporting(E_ALL);
     }
@@ -15,7 +15,7 @@
     // Only show error messages in debug mode, otherwise die silently
     // TODO: Log errors to file
     function fatalError($errorMsg) {
-        if($debug_mode) {
+        if ($debug_mode) {
             echo '<h3>Error</h3>';
             echo '<p>'.$errorMsg.'</p>';
         }
