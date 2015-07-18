@@ -71,7 +71,7 @@
 </head>
 <body>
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="wineName">
     <br />Search by wine name:
     <input type="text" name="wineName" value="All" /> (type All to see all wines)
@@ -79,7 +79,7 @@
   </form>
   <br />
 
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="wineryName">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" /> (type All to see all wineries)
@@ -87,7 +87,7 @@
   </form>
   <br />
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="regionMenu">
     <br />Search by region:
     <?php buildRegionMenu($dbh); ?>
@@ -95,7 +95,7 @@
   </form>
   <br />
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="grapeMenu">
     <br />Search by grape variety:
     <?php buildGrapeMenu($dbh); ?>
@@ -103,7 +103,7 @@
   </form>
   <br />
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="years">
     <br />Search by years:
     From <input type="text" name="minYear" value="" />
@@ -112,21 +112,21 @@
   </form>
   <br />
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="wineStock">
     <br />Search by minimum number of wine(s) in stock, per wine:
     <br /><input type="submit" value="Search" />
   </form>
   <br />
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="wineOrder">
     <br />Search by minimum number of wines ordered, per wine:
     <br /><input type="submit" value="Search" />
   </form>
   <br />
   
-  <form action="answer.php" method="POST">
+  <form action="answer.php" method="GET">
     <input type="hidden" name="searchMethod" value="cost">
     <br />Search by dollar cost range:
     From <input type="text" name="minCost" value="0" />

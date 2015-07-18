@@ -27,14 +27,14 @@ function sanitise($data) {
     return $data;
 }
 
+// Sanitise searchMethod
+$searchMethod = sanitise($_GET["searchMethod"]);
+
 // Ensure searchMethod exists
-if (!isset(searchMethod)) {
+if (is_null($searchMethod)) {
     echo '<h3>Error</h3><p>Search method not found.</p>';
     die();
 }
-
-// Sanitise searchMethod
-$searchMethod = sanitise($_GET["searchMethod"]);
 
 // TEMP: just checking
 echo 'Search Method ' . $searchMethod . ' selected.';
