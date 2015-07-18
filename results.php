@@ -29,8 +29,8 @@
             echo "<td>{$result["year"]}</td>";
             echo "<td>{$result["winery_name"]}</td>";
             echo "<td>{$result["region_name"]}</td>";
+            echo "<td>{$result["cost"]}</td>";
             echo "<td>{$result["on_hand"]}</td>";
-            echo "<td>{$result["stock"]}</td>";
             echo "<td>{$result["total_sold"]}</td>";
             echo "<td>{$result["total_revenue"]}</td>";
             echo "</tr>";
