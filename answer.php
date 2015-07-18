@@ -93,11 +93,11 @@
     $dbh = null;
     
     // TESTING
-    if(DEBUG_MODE) {
-        echo '<pre>';
-        echo print_r($result);
-        echo '</pre>';
-        // phpinfo();
+    //if(DEBUG_MODE) {
+    //    echo '<pre>';
+    //    echo print_r($result);
+    //    echo '</pre>';
+    //    phpinfo();
     //    fatalError("Query: {$search}");
     }
     
