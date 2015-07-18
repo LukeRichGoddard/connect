@@ -51,7 +51,7 @@
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
-        $search = " AND wine.wine_name
+        $search .= " AND wine.wine_name
                    LIKE :wineNameBind ";
     }
     
