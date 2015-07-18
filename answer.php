@@ -26,14 +26,16 @@
         try {
             $statement = $dbh->prepare($search);
             $statement->execute(array(':wineName' => $wineName));
-            $result = $statement->fetchAll();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             
         } catch (PDOException $e) {
             fatalError("PDO Exception occurred");
         }
         
         // Prepare results for URL
+        echo '<pre>';
         print_r($result);
+        echo '</pre>';
         
     }
     
