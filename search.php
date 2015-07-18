@@ -6,7 +6,7 @@
         $dbh = new PDO(DB_DSN, DB_USER, DB_PW);
     }
     catch (PDOException $e) {
-        echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
+        echo '<h3>Error</h3><p>Could not connect to database</p>';
         die();
     }
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
@@ -42,14 +42,16 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  <form action="action.php" method="POST">
+  <form action="answer.php" method="POST">
+    <input type="hidden" name="searchMethod" value="wineryName">
     <br />Search by winery:
     <input type="text" name="wineryName" value="All" />
       (type All to see all regions)
     <br /><input type="submit" value="Search" />
   </form>
   <br />
-  <form action="action.php" method="POST">
+  <form action="answer.php" method="POST">
+    <input type="hidden" name="searchMethod" value="regionMenu">
     <br />Search by region:
     <?php buildRegionMenu($dbh); ?>
     <br /><input type="submit" value="Search" />
