@@ -47,6 +47,9 @@
                     LIKE :wineryNameBind ";
     }
     
+    // Limit to 100 wines
+    $search .= " LIMIT 100";
+    
     // Execute query
     try {
         $statement = $dbh->prepare($search);
