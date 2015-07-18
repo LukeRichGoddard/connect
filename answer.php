@@ -31,9 +31,15 @@
     
     if(strcmp($wineName, '%All%') == 0) {
         // Prepare all query
-        $search = "SELECT * 
-                   FROM   wine
-                   WHERE  1 = 1 ";
+        $search = "SELECT wine.wine_id, 
+                          wine.wine_name, 
+                          wine.year,
+                          winery.winery_name, 
+                          region.region_name
+                   FROM   wine, region, winery, wine_variety
+                   WHERE  winery.region_id = region.region_id
+                   AND    wine.winery_id = winery.winery_id
+                   AND    wine.wine_type = wine_variety.wine_id";
     } else {
         // Prepare specific query
         $search = "SELECT * 
@@ -43,7 +49,7 @@
     }
     
     if (strcmp($wineryName, '%All%') != 0) {
-        $search .= "AND  winery.winery_name
+        $search .= " AND  winery.winery_name
                     LIKE :wineryNameBind ";
     }
     
