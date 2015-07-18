@@ -22,10 +22,10 @@
         foreach ($_GET["results"] as $result) {
             echo "<tr>";
             echo "<td>{$result["wine_id"]}</td>";
-            echo "<td>wine_name</td>";
-            echo "<td>wine_type</td>";
-            echo "<td>year</td>";
-            echo "<td>winery_id</td>";
+            echo "<td>{$result["wine_name"]}</td>";
+            echo "<td>{$result["wine_type"]}</td>";
+            echo "<td>{$result["year"]}</td>";
+            echo "<td>{$result["winery_id"]}</td>";
             echo "</tr>";
         }
         
