@@ -99,7 +99,7 @@
     //    echo '</pre>';
     //    phpinfo();
     //    fatalError("Query: {$search}");
-    }
+    //}
     
     // Redirect to Results page
     header("Location: {$resultsURL}");
