@@ -55,7 +55,7 @@
             $statement->bindParam(':wineNameBind', $wineName, PDO::PARAM_STR, 50+2);
         }
         
-        if(!is_null($wineryName)) {
+        if(strcmp($wineryName, '%All%') != 0) {
             $statement->bindParam(':wineryNameBind', $wineryName, PDO::PARAM_STR, 100+2);
         }
         
