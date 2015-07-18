@@ -30,15 +30,17 @@
     $maxCost = sanitise($_GET["maxCost"]);
     
     // Prepare search query
-    $search = "SELECT wine.wine_id, 
-                      wine.wine_name, 
-                      wine.year,
-                      winery.winery_name, 
-                      region.region_name
-               FROM   wine, region, winery, wine_variety
-               WHERE  winery.region_id = region.region_id
-               AND    wine.winery_id = winery.winery_id
-               AND    wine.wine_type = wine_variety.wine_id";
+    $search = " SELECT wine.wine_id, 
+                       wine.wine_name, 
+                       wine.year,
+                       wine_type.wine_type,
+                       group_concat(grape_variety.variety
+                       order by wine_variety.id ASC SEPARATOR ' ') AS wine_variety
+                FROM   wine, wine_type, wine_variety, grape_variety
+                WHERE  wine.wine_id = wine_variety.wine_id
+                AND    wine.wine_type = wine_type.wine_type_id
+                AND    wine_variety.variety_id = grape_variety.variety_id
+                GROUP BY wine.wine_id;";
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
