@@ -60,7 +60,7 @@
     }
     
     // regionBind
-    if ($regionID != 0) {
+    if ($regionID != 1) {
         $search .= " AND region.region_id = :regionBind ";
     }
     
@@ -116,7 +116,7 @@
             $statement->bindParam(':wineryNameBind', $wineryName, PDO::PARAM_STR, 100+2);
         }
         
-        if ($regionID != 0) {
+        if ($regionID != 1) {
              $statement->bindParam(':regionBind', $wineryName, PDO::PARAM_INT);
         }
         
