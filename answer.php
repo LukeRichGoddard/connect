@@ -16,16 +16,26 @@
         // Validate input
         $wineName = sanitise($_GET["wineName"]);
         
-        // Prepare query
-        $search = "SELECT * 
-                  FROM   wine
-                  WHERE  wine.wine_name
-                  LIKE   '%:wineName%'";
+        if(strcmp($wineName, 'All') == 0) {
+            // Prepare all query
+            $search = "SELECT * 
+                       FROM   wine";
+        } else {
+            // Prepare specific query
+            $search = "SELECT * 
+                       FROM   wine
+                       WHERE  wine.wine_name
+                       LIKE   '%:wineName%'";
+        }
         
         // Execute query
         try {
             $statement = $dbh->prepare($search);
-            $statement->execute(array(':wineName' => $wineName));
+            if(strcmp($wineName, 'All') == 0) {
+                $statement->execute());
+            } else {
+                $statement->execute(array(':wineName' => $wineName));
+            }
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             
         } catch (PDOException $e) {
