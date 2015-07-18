@@ -14,7 +14,8 @@
     // wineNameSearch
     function wineNameSearch($dbh) {
         // Validate input
-        $wineName = sanitise($_GET["wineName"]);
+        // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
+        $wineName = "%".sanitise($_GET["wineName"])."%";
         
         if(strcmp($wineName, 'All') == 0) {
             // Prepare all query
@@ -25,21 +26,20 @@
             $search = "SELECT * 
                        FROM   wine
                        WHERE  wine.wine_name
-                       LIKE   %:wineNameBind%";
+                       LIKE   :wineNameBind";
         }
         
         // Execute query
         try {
             $statement = $dbh->prepare($search);
-            if(strcmp($wineName, 'All') == 0) {
-                $statement->execute();
-            } else {
-                $statement->bindValue(':wineNameBind', $wineName, PDO::PARAM_STR, 50);
-                $statement->execute();
-                
-                // Debugging
-                echo $statement->debugDumpParams();
+            if(strcmp($wineName, 'All') != 0) {
+                $statement->bindValue(':wineNameBind', $wineName, PDO::PARAM_STR, 50+2);
             }
+            $statement->execute();
+            
+            // Debugging
+            echo $statement->debugDumpParams();
+        
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             
         } catch (PDOException $e) {
