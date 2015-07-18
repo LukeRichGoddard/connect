@@ -42,16 +42,16 @@
                    LIKE   :wineNameBind ";
     }
     
-    if (strcmp($wineName, '%All%') != 0) {
+    if (strcmp($wineryName, '%All%') != 0) {
         $search .= "AND  winery.winery_name
                     LIKE :wineryNameBind ";
     }
     
     // TESTING
-    if(DEBUG_MODE) {
-        echo $search;
-        die();
-    }
+    //if(DEBUG_MODE) {
+    //    echo $search;
+    //    die();
+    //}
     
     // Execute query
     try {
