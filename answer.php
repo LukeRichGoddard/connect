@@ -44,8 +44,7 @@
                 AND    wine.winery_id = winery.winery_id
                 AND    winery.region_id = region.region_id
                 AND    wine_variety.variety_id = grape_variety.variety_id
-                AND    wine.wine_id = inventory.wine_id
-                GROUP BY wine.wine_id ";
+                AND    wine.wine_id = inventory.wine_id ";
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
@@ -60,7 +59,7 @@
     }
     
     // Limit to 100 wines
-    $search .= " LIMIT 100";
+    $search .= " GROUP BY wine.wine_id LIMIT 100";
     
     // Execute query
     try {
