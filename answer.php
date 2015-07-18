@@ -7,6 +7,54 @@
     
     require_once('common.php');
     
+    //
+    // FUNCTIONS
+    //
+    
+    // wineNameSearch
+    function wineNameSearch() {
+        
+    }
+    
+    // wineryNameSearch
+    function wineryNameSearch() {
+        
+    }
+    
+    // regionMenuSearch
+    function regionMenuSearch() {
+        
+    }
+    
+    // grapeMenuSearch
+    function grapeMenuSearch() {
+        
+    }
+    
+    // yearsSearch
+    function yearsSearch() {
+        
+    }
+    
+    // wineStockSearch
+    function wineStockSearch() {
+        
+    }
+    
+    // wineOrderSearch
+    function wineOrderSearch() {
+        
+    }
+    
+    // costSearch
+    function costSearch() {
+        
+    }
+
+    //
+    // MAIN
+    //
+    
     // Establish database connection
     require_once('db.php');
     try {
