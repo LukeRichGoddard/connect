@@ -68,84 +68,39 @@
   <title>Search Winestore</title>
 </head>
 <body>
-  
   <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="wineName">
     <br />Search by wine name:
-    <input type="text" name="wineName" value="All" /> (type All to see all wines)
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="wineryName">
+    <input type="text" name="wineName" value="All" /> (type All for all wines)
+    
     <br />Search by winery:
-    <input type="text" name="wineryName" value="All" /> (type All to see all wineries)
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="regionMenu">
+    <input type="text" name="wineryName" value="All" /> (type All for all wineries)
+    
     <br />Search by region:
     <?php buildRegionMenu($dbh); ?>
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="grapeMenu">
+    
     <br />Search by grape variety:
     <?php buildGrapeMenu($dbh); ?>
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="years">
-    <br />Search by years:
+    
+    <br />Search by year:
     From <input type="text" name="minYear" value="" />
     to <input type="text" name="maxYear" value="" />
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="wineStock">
+    <br />
+    
     <br />Search by minimum number of wine(s) in stock, per wine:
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="wineOrder">
+    Minimum stocked <input type="text" name="minCost" value="" />
+    <br />
+    
     <br />Search by minimum number of wines ordered, per wine:
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="cost">
+    Minimum ordered <input type="text" name="minCost" value="" />
+    <br />
+    
     <br />Search by dollar cost range:
-    From <input type="text" name="minCost" value="0" />
-    to <input type="text" name="maxCost" value="0" />
+    From <input type="text" name="minCost" value="" />
+    to <input type="text" name="maxCost" value="" />
+    
     <br /><input type="submit" value="Search" />
   </form>
   <br />
-  
-  <form action="answer.php" method="GET">
-    <br />BUG TEST: this should invoke a Search method not found error.
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
-  <form action="answer.php" method="GET">
-    <input type="hidden" name="searchMethod" value="error">
-    <br />BUG TEST: this should invoke a Search method not recognised error.
-    <br /><input type="submit" value="Search" />
-  </form>
-  <br />
-  
 </body>
 </html>
 <?php $dbh = null; ?>
