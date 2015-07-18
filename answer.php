@@ -85,18 +85,6 @@
                 AND wine.year <= :maxYearBind ";
     }
     
-    // minOrder
-    if ($minOrder != 0 or is_null($minOrder)) {
-        $search .= " 
-                AND total_sold >= :minOrderBind ";
-    }
-    
-    // minStock
-    if ($minStock != 0 or is_null($minStock)) {
-        $search .= " 
-                AND on_hand >= :minStockBind ";
-    }
-    
     // minCost
     if ($minCost != 0 or is_null($minCost)) {
         $search .= " 
@@ -109,9 +97,30 @@
                 AND inventory.cost <= :maxCostBind ";
     }
     
+    // GROUP BY
+    $search .= " 
+                GROUP BY wine.wine_id";
+    
+    // minOrder
+    if ($minOrder != 0 or is_null($minOrder)) {
+        $needsAnd = true;
+        $search .= " 
+                HAVING total_sold >= :minOrderBind ";
+    }
+    
+    // minStock
+    if ($minStock != 0 or is_null($minStock)) {
+        if($needsAnd) {
+            $search .= " 
+                AND on_hand >= :minStockBind ";
+        } else {
+            $search .= " 
+                HAVING on_hand >= :minStockBind ";
+        }
+    }
+    
     // Limit to 50 wines
     $search .= " 
-                GROUP BY wine.wine_id
                 ORDER BY wine.wine_id 
                 LIMIT 50";
     
