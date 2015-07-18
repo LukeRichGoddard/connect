@@ -4,7 +4,7 @@
     error_reporting(E_ALL);
 
     // Only search.php should access this page
-    if (basename($_SERVER[HTTP_REFERER]) != "search.php") {
+    if (basename($_SERVER["HTTP_REFERER"]) != "search.php") {
         header("Location: search.php");
         exit;
     }
