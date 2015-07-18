@@ -45,9 +45,10 @@
             // Run query and check for grape varieties
             if ($result->rowCount() > 0) {
                 print "\n<select name=\"grape_variety\">";
+                print "\n<option value=\"-1\">All</option>";
                 // Add regions to drop down menu
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                    echo "\n<option value=\"".$row['variety_id']."\">".$row['variety']."</option>";
+                    print "\n<option value=\"{$row['variety_id']}\">{$row['variety']}</option>";
                 }
                 print "\n</select>";
             } else {
