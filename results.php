@@ -7,7 +7,7 @@
         
         // Output results
         echo '<pre>';
-        print_r($results);
+        print_r($_GET["results"]);
         echo '</pre>';
     } else {
         print("No results");
