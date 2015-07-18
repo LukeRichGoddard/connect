@@ -161,9 +161,6 @@
     
         $statement->execute();
         
-        // Debugging
-        // echo $statement->debugDumpParams();
-    
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         
     } catch (PDOException $e) {
@@ -178,13 +175,13 @@
     $dbh = null;
     
     // TESTING
-    if(DEBUG_MODE) {
-        echo '<pre>';
-        echo print_r($statement);
-        echo '</pre>';
+    //if(DEBUG_MODE) {
+    //    echo '<pre>';
+    //    echo print_r($statement);
+    //    echo '</pre>';
     //    phpinfo();
-        fatalError("Query: {$search}");
-    }
+    //    fatalError("Query: {$search}");
+    //}
     
     // Redirect to Results page
     header("Location: {$resultsURL}");
