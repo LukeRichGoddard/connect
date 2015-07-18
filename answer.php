@@ -17,14 +17,14 @@
         $wineName = sanitise($_GET["wineName"])
         
         // Prepare query
-        $query = "SELECT * 
+        $search = "SELECT * 
                   FROM   wine
                   WHERE  wine.wine_name
                   LIKE   '%:wineName%'";
         
         // Execute query
         try {
-            $statement = $dbh->prepare($query);
+            $statement = $dbh->prepare($search);
             $statement->execute(array(':wineName' => $wineName));
             $result = $statement->fetchAll();
             
