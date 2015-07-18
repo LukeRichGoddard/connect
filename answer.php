@@ -65,7 +65,7 @@
         $statement->execute();
         
         // Debugging
-        echo $statement->debugDumpParams();
+        // echo $statement->debugDumpParams();
     
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         
