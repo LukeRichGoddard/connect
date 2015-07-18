@@ -172,7 +172,7 @@
         echo print_r($statement);
         echo '</pre>';
     //    phpinfo();
-    //    fatalError("Query: {$search}");
+        fatalError("Query: {$search}");
     }
     
     // Redirect to Results page
