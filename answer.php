@@ -128,7 +128,7 @@
         }
         
         if ($regionID != 1) {
-             $statement->bindParam(':regionBind', $wineryName, PDO::PARAM_INT);
+             $statement->bindParam(':regionBind', $regionID, PDO::PARAM_INT);
         }
         
         if ($grapeVariety != 0) {
