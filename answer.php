@@ -18,10 +18,22 @@ catch (PDOException $e) {
     die();
 }
 
+// Sanitise function
+// Based on code from http://www.w3schools.com/php/php_form_validation.asp
+function sanitise($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+// Ensure searchMethod exists
 if (!isset(searchMethod)) {
     echo '<h3>Error</h3><p>Search method not found.</p>';
     die();
 }
 
+// Sanitise searchMethod
+$searchMethod = sanitise($_GET["searchMethod"]);
 
 ?>
