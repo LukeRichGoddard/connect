@@ -82,7 +82,9 @@
     
     // TESTING
     if(DEBUG_MODE) {
-        echo '<pre>' . print_r($result) . '</pre>';
+        echo '<pre>';
+        echo print_r($result);
+        echo '</pre>';
     //    fatalError("Query: {$search}");
     }
     
