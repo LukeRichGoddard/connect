@@ -29,25 +29,24 @@
     $minCost = sanitise($_GET["minCost"]);
     $maxCost = sanitise($_GET["maxCost"]);
     
-    if(strcmp($wineName, '%All%') == 0) {
-        // Prepare all query
-        $search = "SELECT wine.wine_id, 
-                          wine.wine_name, 
-                          wine.year,
-                          winery.winery_name, 
-                          region.region_name
-                   FROM   wine, region, winery, wine_variety
-                   WHERE  winery.region_id = region.region_id
-                   AND    wine.winery_id = winery.winery_id
-                   AND    wine.wine_type = wine_variety.wine_id";
-    } else {
-        // Prepare specific query
-        $search = "SELECT * 
-                   FROM   wine
-                   WHERE  wine.wine_name
+    // Prepare search query
+    $search = "SELECT wine.wine_id, 
+                      wine.wine_name, 
+                      wine.year,
+                      winery.winery_name, 
+                      region.region_name
+               FROM   wine, region, winery, wine_variety
+               WHERE  winery.region_id = region.region_id
+               AND    wine.winery_id = winery.winery_id
+               AND    wine.wine_type = wine_variety.wine_id";
+    
+    // wineNameBind
+    if (strcmp($wineName, '%All%') != 0) {
+        $search = " AND  wine.wine_name
                    LIKE   :wineNameBind ";
     }
     
+    // wineryNameBind
     if (strcmp($wineryName, '%All%') != 0) {
         $search .= " AND  winery.winery_name
                     LIKE :wineryNameBind ";
@@ -91,7 +90,7 @@
         echo '<pre>';
         echo print_r($result);
         echo '</pre>';
-        phpinfo();
+        // phpinfo();
     //    fatalError("Query: {$search}");
     }
     
