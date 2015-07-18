@@ -1,17 +1,24 @@
 <?php
-    // TESTING: show errors
-    ini_set('display_errors',1);
-    error_reporting(E_ALL);
+    $debug_mode = true;
+    
+    // Show errors in debug mode
+    if(debug_mode) {
+        ini_set('display_errors',1);
+        error_reporting(E_ALL);
+    }
 
     //
     // COMMON FUNCTIONS
     //
 
     // FatalError function
+    // Only show error messages in debug mode, otherwise die silently
     // TODO: Log errors to file
     function fatalError($errorMsg) {
-        echo '<h3>Error</h3>';
-        echo '<p>'.$errorMsg.'</p>';
+        if(debug_mode) {
+            echo '<h3>Error</h3>';
+            echo '<p>'.$errorMsg.'</p>';
+        }
         die();
     }
     
@@ -24,4 +31,9 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+    
+    //
+    // END COMMON FUNCTIONS
+    //
+    
 ?>
