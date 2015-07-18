@@ -48,10 +48,9 @@
     }
     
     // TESTING
-    //if(DEBUG_MODE) {
-    //    echo $search;
-    //    die();
-    //}
+    if(DEBUG_MODE) {
+        fatalError("Query: {$search}");
+    }
     
     // Execute query
     try {
