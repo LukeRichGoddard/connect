@@ -11,7 +11,9 @@
     // FUNCTIONS
     //
     
+    //
     // wineNameSearch
+    //
     function wineNameSearch($dbh) {
         // Validate input
         // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
@@ -53,37 +55,51 @@
         
     }
     
+    //
     // wineryNameSearch
+    //
     function wineryNameSearch($dbh) {
         
     }
     
+    //
     // regionMenuSearch
+    //
     function regionMenuSearch($dbh) {
         
     }
     
+    //
     // grapeMenuSearch
+    //
     function grapeMenuSearch($dbh) {
         
     }
     
+    //
     // yearsSearch
+    //
     function yearsSearch($dbh) {
         
     }
     
+    //
     // wineStockSearch
+    //
     function wineStockSearch($dbh) {
         
     }
     
+    //
     // wineOrderSearch
+    //
     function wineOrderSearch($dbh) {
         
     }
     
+    //
     // costSearch
+    //
     function costSearch($dbh) {
         
     }
