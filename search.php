@@ -1,6 +1,5 @@
 <?php
-    ini_set('display_errors',1);
-    error_reporting(E_ALL);
+    require_once('common.php');
     require_once('db.php');
     try {
         $dbh = new PDO(DB_DSN, DB_USER, DB_PW);

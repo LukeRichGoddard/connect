@@ -1,7 +1,6 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL);
-
-// Output results
-
+    require_once('common.php');
+    
+    // Output results
+    
 ?>
