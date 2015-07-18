@@ -87,10 +87,10 @@
     to <input type="text" name="maxYear" value="" />
     <br />
     
-    <br />Minimum in stock: <input type="text" name="minCost" value="" />
+    <br />Minimum in stock: <input type="text" name="minStock" value="" />
     <br />
     
-    <br />Minimum ordered: <input type="text" name="minCost" value="" />
+    <br />Minimum ordered: <input type="text" name="minOrder" value="" />
     <br />
     
     <br />Price range:
