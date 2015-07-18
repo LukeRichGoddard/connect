@@ -36,4 +36,35 @@ if (!isset(searchMethod)) {
 // Sanitise searchMethod
 $searchMethod = sanitise($_GET["searchMethod"]);
 
+// Select method for search
+switch (searchMethod) {
+    
+    wineName:
+        break;
+    
+    wineryName:
+        break;
+    
+    regionMenu:
+        break;
+        
+    grapeMenu:
+        break;
+    
+    years:
+        break;
+    
+    wineStock:
+        break;
+    
+    wineOrder:
+        break;
+    
+    cost:
+        break;
+    
+    default:
+        echo '<h3>Error</h3><p>Search method not recognised.</p>';
+        die();
+}
 ?>
