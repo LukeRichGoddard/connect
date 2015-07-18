@@ -3,7 +3,7 @@
     
     if(isset($_GET["results"])) {
         // Parse URL encoding
-        parse_str($_GET["results"], $results);
+        // parse_str($_GET["results"], $results);
         
         // Output results
         // echo '<pre>';
@@ -19,7 +19,7 @@
         echo "</tr>";
         
         // loop over results
-        foreach ($results as $result) {
+        foreach ($_GET["results"] as $result) {
             echo "<tr>";
             echo "<td>{$result["wine_id"]}</td>";
             echo "<td>wine_name</td>";
