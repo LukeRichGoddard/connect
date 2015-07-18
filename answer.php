@@ -42,13 +42,13 @@
     
     // wineNameBind
     if (strcmp($wineName, '%All%') != 0) {
-        $search = " AND  wine.wine_name
-                   LIKE   :wineNameBind ";
+        $search = " AND wine.wine_name
+                   LIKE :wineNameBind ";
     }
     
     // wineryNameBind
     if (strcmp($wineryName, '%All%') != 0) {
-        $search .= " AND  winery.winery_name
+        $search .= " AND winery.winery_name
                     LIKE :wineryNameBind ";
     }
     
