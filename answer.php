@@ -17,10 +17,10 @@
         $wineName = sanitise($_GET["wineName"])
         
         // Prepare query
-        $query = 'SELECT * 
+        $query = "SELECT * 
                   FROM   wine
                   WHERE  wine.wine_name
-                  LIKE   "%:wineName%"';
+                  LIKE   '%:wineName%'";
         
         // Execute query
         try {
