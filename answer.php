@@ -50,6 +50,7 @@
     // TESTING
     if(DEBUG_MODE) {
         echo $search;
+        die();
     }
     
     // Execute query
