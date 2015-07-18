@@ -49,7 +49,7 @@
         }
         
         // Prepare results for URL
-        $results = http_build_query(array('results' => $result));
+        $results = http_build_query(array('r' => $result));
         $resultsURL = "results.php?".$results;
         
         // Redirect to Results page
