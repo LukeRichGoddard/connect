@@ -16,9 +16,6 @@
         fatalError("Could not connect to database");
     }
     
-    // Sanitise searchMethod
-    $searchMethod = sanitise($_GET["searchMethod"]);
-    
     // Validate input
     // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
     $wineName = "%".sanitise($_GET["wineName"])."%";
@@ -48,6 +45,11 @@
     if (!is_null($wineryName)) {
         $search .= "AND  winery.winery_name
                     LIKE :wineryNameBind ";
+    }
+    
+    // TESTING
+    if(DEBUG_MODE) {
+        echo $search;
     }
     
     // Execute query
