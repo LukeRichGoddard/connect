@@ -47,7 +47,7 @@
     
     if (!is_null($wineryName)) {
         $search .= "AND  winery.winery_name
-                    LIKE :wineryNameBind "
+                    LIKE :wineryNameBind ";
     }
     
     // Execute query
