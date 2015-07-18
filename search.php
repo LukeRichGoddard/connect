@@ -3,14 +3,13 @@
     error_reporting(E_ALL);
     require_once('db.php');
     try {
-        $dbh = new PDO('mysql:host=localhost;dbname=winestore;charset=utf8', DB_USER, DB_PW);
+        $dbh = new PDO(DB_DSN, DB_USER, DB_PW);
     }
     catch (PDOException $e) {
         echo '<h3>Error</h3><p>Could not connect to mysql on ' . DB_HOST . '</p><br />';
         die();
     }
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
-    print_r($dbh);
 	
 	// Build drop down menu for selecting regions
 	function buildRegionMenu($dbh) {
