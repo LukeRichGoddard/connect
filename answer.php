@@ -34,7 +34,7 @@
             if(strcmp($wineName, 'All') == 0) {
                 $statement->execute();
             } else {
-                $statement->bindParam(':wineNameBind', $wineName, PDO::PARAM_STR, 50);
+                $statement->bindValue(':wineNameBind', $wineName, PDO::PARAM_STR, 50);
                 $statement->execute();
                 
                 // Debugging
