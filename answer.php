@@ -14,7 +14,7 @@
     // wineNameSearch
     function wineNameSearch() {
         // Validate input
-        $wineName = sanitise($_GET["wineName"])
+        $wineName = sanitise($_GET["wineName"]);
         
         // Prepare query
         $search = "SELECT * 
