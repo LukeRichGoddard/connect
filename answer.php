@@ -19,6 +19,7 @@
     
     // Sanitise function
     // Based on code from http://www.w3schools.com/php/php_form_validation.asp
+    // TODO: replace with preg checks
     function sanitise($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -35,10 +36,15 @@
         fatalError("Could not connect to database");
     }
 
+    // Ensure searchMethod exists
+    if (!isset($_GET["searchMethod"])) {
+        fatalError("Search method not found");
+    }
+    
     // Sanitise searchMethod
     $searchMethod = sanitise($_GET["searchMethod"]);
 
-    // Ensure searchMethod exists
+    // Ensure searchMethod is not null
     if (is_null($searchMethod)) {
         fatalError("Search method not found");
     }
