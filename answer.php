@@ -25,7 +25,7 @@
             $search = "SELECT * 
                        FROM   wine
                        WHERE  wine.wine_name
-                       LIKE   '%:wineNameBind%'";
+                       LIKE   %:wineNameBind%";
         }
         
         // Execute query
@@ -34,11 +34,11 @@
             if(strcmp($wineName, 'All') == 0) {
                 $statement->execute();
             } else {
-                // Debugging
-                echo $statement->debugDumpParams();
-                
                 $statement->bindParam(':wineNameBind', $wineName, PDO::PARAM_STR, 50);
                 $statement->execute();
+                
+                // Debugging
+                echo $statement->debugDumpParams();
             }
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             
