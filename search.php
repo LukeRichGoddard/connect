@@ -1,12 +1,13 @@
 <?php
     require_once('common.php');
+    
+    // Establish database connection
     require_once('db.php');
     try {
         $dbh = new PDO(DB_DSN, DB_USER, DB_PW);
     }
     catch (PDOException $e) {
-        echo '<h3>Error</h3><p>Could not connect to database</p>';
-        die();
+        fatalError("Could not connect to database");
     }
     echo '<!-- Connected to mysql database ' . DB_NAME . ' -->';
 	
@@ -30,8 +31,7 @@
                 print "<p>Error: no regions found in " . DB_NAME . "</p>";
             }
         } catch (PDOException $e) {
-            echo '<h3>Error</h3><p>PDO Exception occurred</p><br />';
-			die();
+            fatalError("PDO Exception occurred");
         }
 	}
     
@@ -55,8 +55,7 @@
                 print "<p>Error: no grape varieties found in " . DB_NAME . "</p>";
             }
         } catch (PDOException $e) {
-            echo '<h3>Error</h3><p>PDO Exception occurred</p><br />';
-			die();
+            fatalError("PDO Exception occurred");
         }
 	}
     
