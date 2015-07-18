@@ -15,7 +15,7 @@
     // Only show error messages in debug mode, otherwise die silently
     // TODO: Log errors to file
     function fatalError($errorMsg) {
-        if(debug_mode) {
+        if($debug_mode) {
             echo '<h3>Error</h3>';
             echo '<p>'.$errorMsg.'</p>';
         }
