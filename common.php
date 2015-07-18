@@ -1,5 +1,5 @@
 <?php
-    $debug_mode = true;
+    define('DEBUG_MODE', true);
     
     // Show errors in debug mode
     if ($debug_mode) {
@@ -15,7 +15,7 @@
     // Only show error messages in debug mode, otherwise die silently
     // TODO: Log errors to file
     function fatalError($errorMsg) {
-        if ($debug_mode) {
+        if (DEBUG_MODE) {
             echo '<h3>Error</h3>';
             echo '<p>'.$errorMsg.'</p>';
         }
