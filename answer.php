@@ -167,13 +167,13 @@
     $dbh = null;
     
     // TESTING
-    //if(DEBUG_MODE) {
-    //    echo '<pre>';
-    //    echo print_r($result);
-    //    echo '</pre>';
+    if(DEBUG_MODE) {
+        echo '<pre>';
+        echo print_r($statement);
+        echo '</pre>';
     //    phpinfo();
     //    fatalError("Query: {$search}");
-    //}
+    }
     
     // Redirect to Results page
     header("Location: {$resultsURL}");
