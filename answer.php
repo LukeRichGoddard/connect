@@ -33,7 +33,7 @@
         try {
             $statement = $dbh->prepare($search);
             if(strcmp($wineName, 'All') != 0) {
-                $statement->bindValue(':wineNameBind', $wineName, PDO::PARAM_STR, 50+2);
+                $statement->bindParam(':wineNameBind', $wineName, PDO::PARAM_STR, 50+2);
             }
             $statement->execute();
             
