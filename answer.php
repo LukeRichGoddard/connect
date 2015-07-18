@@ -19,7 +19,7 @@
         // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
         $wineName = "%".sanitise($_GET["wineName"])."%";
         
-        if(strcmp($wineName, 'All') == 0) {
+        if(strcmp($wineName, '%All%') == 0) {
             // Prepare all query
             $search = "SELECT * 
                        FROM   wine";
@@ -34,7 +34,7 @@
         // Execute query
         try {
             $statement = $dbh->prepare($search);
-            if(strcmp($wineName, 'All') != 0) {
+            if(strcmp($wineName, '%All%') != 0) {
                 $statement->bindParam(':wineNameBind', $wineName, PDO::PARAM_STR, 50+2);
             }
             $statement->execute();
