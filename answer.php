@@ -12,7 +12,7 @@
     //
     
     // wineNameSearch
-    function wineNameSearch() {
+    function wineNameSearch($dbh) {
         // Validate input
         $wineName = sanitise($_GET["wineName"]);
         
@@ -38,37 +38,37 @@
     }
     
     // wineryNameSearch
-    function wineryNameSearch() {
+    function wineryNameSearch($dbh) {
         
     }
     
     // regionMenuSearch
-    function regionMenuSearch() {
+    function regionMenuSearch($dbh) {
         
     }
     
     // grapeMenuSearch
-    function grapeMenuSearch() {
+    function grapeMenuSearch($dbh) {
         
     }
     
     // yearsSearch
-    function yearsSearch() {
+    function yearsSearch($dbh) {
         
     }
     
     // wineStockSearch
-    function wineStockSearch() {
+    function wineStockSearch($dbh) {
         
     }
     
     // wineOrderSearch
-    function wineOrderSearch() {
+    function wineOrderSearch($dbh) {
         
     }
     
     // costSearch
-    function costSearch() {
+    function costSearch($dbh) {
         
     }
 
@@ -102,35 +102,35 @@
     switch ($searchMethod) {
         
         case "wineName":
-            wineNameSearch();
+            wineNameSearch($dbh);
             break;
             
         case "wineryName":
-            wineryNameSearch();
+            wineryNameSearch($dbh);
             break;
         
         case "regionMenu":
-            regionMenuSearch();
+            regionMenuSearch($dbh);
             break;
             
         case "grapeMenu":
-            grapeMenuSearch();
+            grapeMenuSearch($dbh);
             break;
         
         case "years":
-            yearsSearch();
+            yearsSearch($dbh);
             break;
         
         case "wineStock":
-            wineStockSearch();
+            wineStockSearch($dbh);
             break;
         
         case "wineOrder":
-            wineOrderSearch();
+            wineOrderSearch($dbh);
             break;
         
         case "cost":
-            costSearch();
+            costSearch($dbh);
             break;
         
         default:
