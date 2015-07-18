@@ -68,35 +68,34 @@
   <title>Search Winestore</title>
 </head>
 <body>
+  <h1>Search Winestore</h1>
   <form action="answer.php" method="GET">
-    <br />Search by wine name:
-    <input type="text" name="wineName" value="All" /> (type All for all wines)
+    <br />Wine name: <input type="text" name="wineName" value="All" />
+    <br />(type All for all wines)
     
-    <br />Search by winery:
-    <input type="text" name="wineryName" value="All" /> (type All for all wineries)
+    <br />Winery: <input type="text" name="wineryName" value="All" />
+    <br />(type All for all wineries)
     
-    <br />Search by region:
+    <br />Region:
     <?php buildRegionMenu($dbh); ?>
     
-    <br />Search by grape variety:
+    <br />Grape Variety:
     <?php buildGrapeMenu($dbh); ?>
     
-    <br />Search by year:
+    <br />Year:
     From <input type="text" name="minYear" value="" />
     to <input type="text" name="maxYear" value="" />
     <br />
     
-    <br />Search by minimum number of wine(s) in stock, per wine:
-    Minimum stocked <input type="text" name="minCost" value="" />
+    <br />Minimum in stock: <input type="text" name="minCost" value="" />
     <br />
     
-    <br />Search by minimum number of wines ordered, per wine:
-    Minimum ordered <input type="text" name="minCost" value="" />
+    <br />Minimum ordered: <input type="text" name="minCost" value="" />
     <br />
     
-    <br />Search by dollar cost range:
-    From <input type="text" name="minCost" value="" />
-    to <input type="text" name="maxCost" value="" />
+    <br />Price range:
+    From $<input type="text" name="minCost" value="" />
+    to $<input type="text" name="maxCost" value="" />
     
     <br /><input type="submit" value="Search" />
   </form>
