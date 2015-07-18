@@ -1,4 +1,5 @@
 <?php
+// Enable errors
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
@@ -31,10 +32,10 @@ function sanitise($data) {
 $searchMethod = sanitise($_GET["searchMethod"]);
 
 // Ensure searchMethod exists
-if (is_null($searchMethod)) {
-    echo '<h3>Error</h3><p>Search method not found.</p>';
-    die();
-}
+//if (is_null($searchMethod)) {
+//    echo '<h3>Error</h3><p>Search method not found.</p>';
+//    die();
+//}
 
 // TEMP: just checking
 echo 'Search Method ' . $searchMethod . ' selected.';
