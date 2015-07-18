@@ -37,7 +37,7 @@ if (!isset(searchMethod)) {
 $searchMethod = sanitise($_GET["searchMethod"]);
 
 // Select method for search
-switch (searchMethod) {
+switch ($searchMethod) {
     
     wineName:
         break;
