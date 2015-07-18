@@ -2,8 +2,6 @@
     require_once('common.php');
     
     if(isset($_GET["r"])) {
-        // Parse URL encoding
-        // parse_str($_GET["results"], $results);
         
         // Output results
         echo "<table>";

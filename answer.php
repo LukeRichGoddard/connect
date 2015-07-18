@@ -183,15 +183,6 @@
     // Close database connection
     $dbh = null;
     
-    // TESTING
-    //if(DEBUG_MODE) {
-    //    echo '<pre>';
-    //    echo print_r($statement);
-    //    echo '</pre>';
-    //    phpinfo();
-    //    fatalError("Query: {$search}");
-    //}
-    
     // Redirect to Results page
     header("Location: {$resultsURL}");
     exit();
