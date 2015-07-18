@@ -135,6 +135,19 @@
   </form>
   <br />
   
+  <form action="answer.php" method="GET">
+    <br />BUG TEST: this should invoke a Search method not found error.
+    <br /><input type="submit" value="Search" />
+  </form>
+  <br />
+  
+  <form action="answer.php" method="GET">
+    <input type="hidden" name="searchMethod" value="error">
+    <br />BUG TEST: this should invoke a Search method not recognised error.
+    <br /><input type="submit" value="Search" />
+  </form>
+  <br />
+  
 </body>
 </html>
 <?php $dbh = null; ?>
