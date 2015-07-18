@@ -2,7 +2,7 @@
     define('DEBUG_MODE', true);
     
     // Show errors in debug mode
-    if ($debug_mode) {
+    if (DEBUG_MODE) {
         ini_set('display_errors',1);
         error_reporting(E_ALL);
     }
