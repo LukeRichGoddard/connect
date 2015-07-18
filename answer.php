@@ -35,21 +35,33 @@
     if(strcmp($wineName, '%All%') == 0) {
         // Prepare all query
         $search = "SELECT * 
-                   FROM   wine";
+                   FROM   wine
+                   WHERE  wine.wine_id = * ";
     } else {
         // Prepare specific query
         $search = "SELECT * 
                    FROM   wine
                    WHERE  wine.wine_name
-                   LIKE   :wineNameBind";
+                   LIKE   :wineNameBind ";
+    }
+    
+    if (!is_null($wineryName)) {
+        $search .= "AND  winery.winery_name
+                    LIKE :wineryNameBind "
     }
     
     // Execute query
     try {
         $statement = $dbh->prepare($search);
+        
         if(strcmp($wineName, '%All%') != 0) {
             $statement->bindParam(':wineNameBind', $wineName, PDO::PARAM_STR, 50+2);
         }
+        
+        if(!is_null($wineryName)) {
+            $statement->bindParam(':wineryNameBind', $wineryName, PDO::PARAM_STR, 100+2);
+        }
+        
         $statement->execute();
         
         // Debugging
