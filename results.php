@@ -21,7 +21,7 @@
         echo "</tr>";
         
         // loop over results
-        foreach ($_GET["results"] as $result) {
+        foreach ($_GET["r"] as $result) {
             echo "<tr>";
             echo "<td>{$result["wine_id"]}</td>";
             echo "<td>{$result["wine_name"]}</td>";
