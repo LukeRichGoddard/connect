@@ -8,17 +8,15 @@
         header("Location: search.php");
         exit;
     }
-
-    // Establish database connection
-    require_once('db.php');
-    try {
-        $dbh = new PDO(DB_DSN, DB_USER, DB_PW);
-    }
-    catch (PDOException $e) {
-        echo '<h3>Error</h3><p>Could not connect to database</p>';
+    
+    // FatalError function
+    // TODO: Log errors to file
+    function fatalError($errorMsg) {
+        echo '<h3>Error</h3>';
+        echo '<p>'.$errorMsg.'</p>';
         die();
     }
-
+    
     // Sanitise function
     // Based on code from http://www.w3schools.com/php/php_form_validation.asp
     function sanitise($data) {
@@ -28,18 +26,23 @@
         return $data;
     }
 
+    // Establish database connection
+    require_once('db.php');
+    try {
+        $dbh = new PDO(DB_DSN, DB_USER, DB_PW);
+    }
+    catch (PDOException $e) {
+        fatalError("Could not connect to database");
+    }
+
     // Sanitise searchMethod
     $searchMethod = sanitise($_GET["searchMethod"]);
 
     // Ensure searchMethod exists
-    //if (is_null($searchMethod)) {
-    //    echo '<h3>Error</h3><p>Search method not found.</p>';
-    //    die();
-    //}
-
-    // TEMP: just checking
-    echo 'Search Method ' . $searchMethod . ' selected.';
-
+    if (is_null($searchMethod)) {
+        fatalError("Search method not found");
+    }
+    
     // Select method for search
     switch ($searchMethod) {
         
