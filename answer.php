@@ -49,10 +49,12 @@
         }
         
         // Prepare results for URL
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
+        $results = http_build_query(array('results' => $result));
+        $resultsURL = "results.php?".$results;
         
+        // Redirect to Results page
+        header("Location: {$resultsURL}");
+        exit();
     }
     
     //
