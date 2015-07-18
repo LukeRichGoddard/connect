@@ -34,7 +34,8 @@
             if(strcmp($wineName, 'All') == 0) {
                 $statement->execute();
             } else {
-                $statement->execute(array(':wineName' => $wineName));
+                $statement->bindParam(':wineName', $wineName, PDO::PARAM_STR, 50)
+                $statement->execute();
             }
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             
