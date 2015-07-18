@@ -32,7 +32,7 @@
         try {
             $statement = $dbh->prepare($search);
             if(strcmp($wineName, 'All') == 0) {
-                $statement->execute());
+                $statement->execute();
             } else {
                 $statement->execute(array(':wineName' => $wineName));
             }
