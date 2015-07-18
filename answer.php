@@ -70,4 +70,7 @@
         default:
             fatalError("Search method not recognised");
     }
+    
+    // Close database connection
+    $dbh = null;
 ?>
