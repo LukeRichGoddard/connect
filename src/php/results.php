@@ -32,7 +32,7 @@
         echo "<td>On Hand</td>";
         echo "<td>Total Sold</td>";
         echo "<td>Total Revenue</td>";
-        echo "</tr>";
+        echo "</tr>\n";
         
         // loop over results
         foreach ($results as $result) {
@@ -46,7 +46,7 @@
             echo "<td>{$result["on_hand"]}</td>";
             echo "<td>{$result["total_sold"]}</td>";
             echo "<td>{$result["total_revenue"]}</td>";
-            echo "</tr>";
+            echo "</tr>\n";
         }
         
         echo '</table>';
