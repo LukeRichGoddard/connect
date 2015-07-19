@@ -21,7 +21,7 @@
     if(isset($results)) {
         
         // Output results
-        echo "<table>";
+        echo "<table id=\"results\">";
         echo "<tr>";
         echo "<td>Wine</td>";
         echo "<td>Grape Variety</td>";
