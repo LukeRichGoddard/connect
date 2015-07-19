@@ -187,9 +187,8 @@
         file_put_contents($cacheFile, $queryData);
     }
     
-    // Prepare results for URL
-    $results = http_build_query(array('r' => $result));
-    $resultsURL = "results.php?query=".$queryChecksum."&".$results;
+    // Prepare URL
+    $resultsURL = "results.php?query=".$queryChecksum;
     
     // Close database connection
     $dbh = null;
