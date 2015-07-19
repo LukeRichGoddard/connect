@@ -124,10 +124,9 @@
         }
     }
     
-    // Limit to 50 wines
+    // Order
     $search .= " 
-                ORDER BY wine.wine_id 
-                LIMIT 50";
+                ORDER BY wine.wine_id";
     
     // Execute query
     try {
