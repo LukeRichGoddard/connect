@@ -24,11 +24,20 @@
     
     // Sanitise function
     // Based on code from http://www.w3schools.com/php/php_form_validation.asp
-    // TODO: replace with preg checks
     function sanitise($data) {
         $data = trim($data);
         $data = stripslashes($data);
-        $data = htmlspecialchars($data);
+        $data = preg_replace("/[^A-Za-z0-9[:space:].]*/",'',$data;
+        return $data;
+    }
+    
+    // SanitiseNum function
+    // Based on code from http://www.w3schools.com/php/php_form_validation.asp
+    // Allows numbers and decimal places only
+    function sanitiseNum($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = preg_replace("/[^0-9.]*/",'',$data;
         return $data;
     }
     
