@@ -187,7 +187,7 @@
     
     // Prepare results for URL
     $results = http_build_query(array('r' => $result));
-    $resultsURL = "results.php?".$results;
+    $resultsURL = "results.php?query=".$queryChecksum."&".$results;
     
     // Close database connection
     $dbh = null;
