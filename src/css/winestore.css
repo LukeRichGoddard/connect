@@ -21,8 +21,8 @@ h1 {
     border-collapse: collapse;
 }
 
-#results td, #results th {
-    font-size: 12px;
+#search td, #search th {
+    font-size: 16px;
     padding: 5px;
 }
 
