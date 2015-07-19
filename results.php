@@ -10,13 +10,12 @@
         // Load data from cache
         if(file_exists($cacheFile)) {
             $results = unserialize(file_get_contents($cacheFile)); 
-            print_r($results);
         } else {
             fatalError("Query cache not found");
         }
     }
     
-    if(isset($_GET["r"])) {
+    if(isset($results)) {
         
         // Output results
         echo "<table>";
@@ -34,7 +33,7 @@
         echo "</tr>";
         
         // loop over results
-        foreach ($_GET["r"] as $result) {
+        foreach ($results as $result) {
             echo "<tr>";
             echo "<td>{$result["wine_id"]}</td>";
             echo "<td>{$result["wine_name"]}</td>";
