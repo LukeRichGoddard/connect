@@ -27,7 +27,7 @@
     function sanitise($data) {
         $data = trim($data);
         $data = stripslashes($data);
-        $data = preg_replace("/[^A-Za-z0-9[:space:].]*/",'',$data;
+        $data = preg_replace("/[^A-Za-z0-9[:space:].]*/",'',$data);
         return $data;
     }
     
@@ -37,7 +37,7 @@
     function sanitiseNum($data) {
         $data = trim($data);
         $data = stripslashes($data);
-        $data = preg_replace("/[^0-9.]*/",'',$data;
+        $data = preg_replace("/[^0-9.]*/",'',$data);
         return $data;
     }
     
