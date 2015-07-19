@@ -23,15 +23,15 @@
         // Output results
         echo "<table id=\"results\">";
         echo "<tr>";
-        echo "<td>Wine</td>";
-        echo "<td>Grape Variety</td>";
-        echo "<td>Year</td>";
-        echo "<td>Winery</td>";
-        echo "<td>Region</td>";
-        echo "<td>Cost</td>";
-        echo "<td>On Hand</td>";
-        echo "<td>Total Sold</td>";
-        echo "<td>Total Revenue</td>";
+        echo "<th>Wine</th>";
+        echo "<th>Grape Variety</th>";
+        echo "<th>Year</th>";
+        echo "<th>Winery</th>";
+        echo "<th>Region</th>";
+        echo "<th>Cost</th>";
+        echo "<th>On Hand</th>";
+        echo "<th>Total Sold</th>";
+        echo "<th>Total Revenue</th>";
         echo "</tr>\n";
         
         // loop over results
