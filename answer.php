@@ -7,6 +7,11 @@
     
     require_once('common.php');
     
+    // Build checksum
+    $queryChecksum = md5(serialize($wineName,$wineryName,$regionID,$grapeVariety,$minYear,$maxYear,$minStock,$minOrder,$minCost,$maxCost));
+    
+    
+    
     // Establish database connection
     require_once('db.php');
     try {
@@ -175,6 +180,9 @@
     } catch (PDOException $e) {
         fatalError("PDO Exception occurred");
     }
+    
+    // Prepare results for Cache
+    $queryData = serialize($result);
     
     // Prepare results for URL
     $results = http_build_query(array('r' => $result));
