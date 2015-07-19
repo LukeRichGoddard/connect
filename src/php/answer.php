@@ -8,17 +8,18 @@
     require_once('common.php');
         
     // Validate input
-    // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
-    $wineName = "%".sanitise($_GET["wineName"])."%";
-    $wineryName = "%".sanitise($_GET["wineryName"])."%";
-    $regionID = sanitise($_GET["region"]);
-    $grapeVariety = sanitise($_GET["grape_variety"]);
-    $minYear = sanitise($_GET["minYear"]);
-    $maxYear = sanitise($_GET["maxYear"]);
-    $minStock = sanitise($_GET["minStock"]);
-    $minOrder = sanitise($_GET["minOrder"]);
-    $minCost = sanitise($_GET["minCost"]);
-    $maxCost = sanitise($_GET["maxCost"]);
+    // BUG FIX: Adding percent symbols based on code example by utrandafirc@yahoo.com 
+    // at http://php.net/manual/en/pdostatement.bindparam.php
+    $wineName     = "%".sanitise($_GET["wineName"])."%";
+    $wineryName   = "%".sanitise($_GET["wineryName"])."%";
+    $regionID     = sanitiseNum($_GET["region"]);
+    $grapeVariety = sanitiseNum($_GET["grape_variety"]);
+    $minYear      = sanitiseNum($_GET["minYear"]);
+    $maxYear      = sanitiseNum($_GET["maxYear"]);
+    $minStock     = sanitiseNum($_GET["minStock"]);
+    $minOrder     = sanitiseNum($_GET["minOrder"]);
+    $minCost      = sanitiseNum($_GET["minCost"]);
+    $maxCost      = sanitiseNum($_GET["maxCost"]);
     
     // Build checksum
     $queryChecksum = md5(serialize(array($wineName,$wineryName,$regionID,$grapeVariety,$minYear,$maxYear,$minStock,$minOrder,$minCost,$maxCost)));
