@@ -1,3 +1,8 @@
 #results {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#results td, #results th {
+    font-size: 12px;
+    padding: 2px;
+}
