@@ -5,7 +5,7 @@
     // Based on code found at http://stackoverflow.com/questions/15746138/
     if(isset($_GET["query"])) {
         $queryChecksum = sanitise($_GET["query"]);
-        $cacheFile = "/home/ubuntu/cache/{$queryChecksum}.data";
+        $cacheFile = "~/cache/{$queryChecksum}.data";
         
         // Load data from cache
         if(file_exists($cacheFile)) {
