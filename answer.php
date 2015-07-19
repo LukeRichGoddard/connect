@@ -9,9 +9,10 @@
     
     // Build checksum
     $queryChecksum = md5(serialize($wineName,$wineryName,$regionID,$grapeVariety,$minYear,$maxYear,$minStock,$minOrder,$minCost,$maxCost));
+    $cacheFile = "~/cache/{$queryChecksum}.data";
     
     // If not cached, build the query and store it in the cache
-    if (!file_exists("~/cache/{$queryChecksum}.data")) {
+    if (!file_exists($cacheFile)) {
     
         // Establish database connection
         require_once('db.php');
@@ -183,6 +184,7 @@
         
         // Prepare results for Cache
         $queryData = serialize($result);
+        file_put_contents($cacheFile, $queryData);
     }
     
     // Prepare results for URL
