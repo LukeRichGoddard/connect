@@ -30,3 +30,8 @@ h1 {
     margin: 0 auto;
     display: table;
 }
+
+.currency {
+    text-align: right;
+    font-family: "Courier New", Courier, Fixed, monospace;
+}
