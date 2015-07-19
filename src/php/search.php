@@ -69,50 +69,46 @@
     <table id="search">
       <tr>
         <td>Wine name:</td>
-        <td colspan="3"><input type="text" name="wineName" value="All" /></td>
+        <td><input type="text" name="wineName" value="All" /></td>
       </tr>
       <tr>
         <td></td>
-        <td colspan="3">(type All for all wines)</td>
+        <td>(type All for all wines)</td>
       </tr> 
       <tr>
         <td>Winery:</td>
-        <td colspan="3"><input type="text" name="wineryName" value="All" /></td>
+        <td><input type="text" name="wineryName" value="All" /></td>
       </tr>   
       <tr>
-        <td></td>
-        <td colspan="3">(type All for all wineries)</td>
+        <td>&nbsp;</td>
+        <td>(type All for all wineries)</td>
       </tr> 
       <tr>
         <td>Region:</td>
-        <td colspan="3"><?php buildRegionMenu($dbh); ?></td>
+        <td><?php buildRegionMenu($dbh); ?></td>
       </tr>   
       <tr>
         <td>Grape Variety:</td>
-        <td colspan="3"><?php buildGrapeMenu($dbh); ?></td>
+        <td><?php buildGrapeMenu($dbh); ?></td>
       </tr>   
       <tr>
-        <td>Year: From </td>
-        <td><input type="text" name="minYear" value="" /></td>
-        <td> to </td>
-        <td><input type="text" name="maxYear" value="" /></td>
+        <td>Year: </td>
+        <td>From <input type="text" name="minYear" size="4"/> to <input type="text" name="maxYear" size="4" /></td>
       </tr>
       <tr>
         <td>Minimum in stock: </td>
-        <td colspan="3"><input type="text" name="minStock" value="" /></td>
+        <td><input type="text" name="minStock" value="" /></td>
       </tr>
       <tr>
         <td>Minimum ordered: </td>
-        <td colspan="3"><input type="text" name="minOrder" value="" /></td>
+        <td><input type="text" name="minOrder" value="" /></td>
       </tr>
       <tr>
-        <td>Price range: From </td>
-        <td><input type="text" name="minCost" value="" /></td>
-        <td> to </td>
-        <td><input type="text" name="maxCost" value="" /></td>
+        <td>Price range: </td>
+        <td>From <input type="text" name="minCost" size="8"/> to <input type="text" name="maxCost" size="8" /></td>
       </tr>
       <tr>
-        <td colspan="4"><input type="submit" value="Search" /></td>
+        <td colspan="2"><input type="submit" value="Search" /></td>
       </tr>
     </table>
   </form>
