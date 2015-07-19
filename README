@@ -1,5 +1,6 @@
 student_number: s3391023
 student_email:  s3391023@student.rmit.edu.au
+prefered_contact: student_email
 
 01/07/2015 Created src directory in preparation for templating
 29/06/2015 Changed git repository access from HTTPS to SSH
