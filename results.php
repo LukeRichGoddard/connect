@@ -3,7 +3,7 @@
     
     // Recreate array from cache
     // Based on code found at http://stackoverflow.com/questions/15746138/
-    if(isset($_GET["query"]) {
+    if(isset($_GET["query"])) {
         $queryChecksum = sanitise($_GET["query"]);
         $cacheFile = "~/cache/{$queryChecksum}.data";
         
