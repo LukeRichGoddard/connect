@@ -45,10 +45,10 @@ h1 {
     font-family: "Courier New", Courier, Fixed, monospace;
 }
 
-.centerBtn {
+#centerBtn {
     text-align: center;
 }
 
-.btn {
+#btn {
     size: 150px;
 }
