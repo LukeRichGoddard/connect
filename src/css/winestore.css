@@ -1,5 +1,6 @@
 #results {
     font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
 }
 
 #results td, #results th {
