@@ -10,6 +10,7 @@
         // Load data from cache
         if(file_exists($cacheFile)) {
             $results = unserialize($cacheFile); 
+            print_r($results);
         } else {
             fatalError("Query cache not found");
         }
