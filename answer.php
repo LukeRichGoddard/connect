@@ -22,7 +22,7 @@
     
     // Build checksum
     $queryChecksum = md5(serialize(array($wineName,$wineryName,$regionID,$grapeVariety,$minYear,$maxYear,$minStock,$minOrder,$minCost,$maxCost)));
-    $cacheFile = "cache/{$queryChecksum}.data";
+    $cacheFile = "~/cache/{$queryChecksum}.data";
     
     // If not cached, build the query and store it in the cache
     if (!file_exists($cacheFile)) {
