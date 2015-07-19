@@ -20,7 +20,6 @@
         // Output results
         echo "<table>";
         echo "<tr>";
-        echo "<td>ID</td>";
         echo "<td>Wine</td>";
         echo "<td>Grape Variety</td>";
         echo "<td>Year</td>";
@@ -35,7 +34,6 @@
         // loop over results
         foreach ($results as $result) {
             echo "<tr>";
-            echo "<td>{$result["wine_id"]}</td>";
             echo "<td>{$result["wine_name"]}</td>";
             echo "<td>{$result["wine_variety"]}</td>";
             echo "<td>{$result["year"]}</td>";
