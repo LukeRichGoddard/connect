@@ -6,6 +6,19 @@
     }
     
     require_once('common.php');
+        
+    // Validate input
+    // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
+    $wineName = "%".sanitise($_GET["wineName"])."%";
+    $wineryName = "%".sanitise($_GET["wineryName"])."%";
+    $regionID = sanitise($_GET["region"]);
+    $grapeVariety = sanitise($_GET["grape_variety"]);
+    $minYear = sanitise($_GET["minYear"]);
+    $maxYear = sanitise($_GET["maxYear"]);
+    $minStock = sanitise($_GET["minStock"]);
+    $minOrder = sanitise($_GET["minOrder"]);
+    $minCost = sanitise($_GET["minCost"]);
+    $maxCost = sanitise($_GET["maxCost"]);
     
     // Build checksum
     $queryChecksum = md5(serialize($wineName,$wineryName,$regionID,$grapeVariety,$minYear,$maxYear,$minStock,$minOrder,$minCost,$maxCost));
@@ -22,19 +35,6 @@
         catch (PDOException $e) {
             fatalError("Could not connect to database");
         }
-        
-        // Validate input
-        // BUG FIX: Adding percentages based on code example by utrandafirc@yahoo.com at http://php.net/manual/en/pdostatement.bindparam.php
-        $wineName = "%".sanitise($_GET["wineName"])."%";
-        $wineryName = "%".sanitise($_GET["wineryName"])."%";
-        $regionID = sanitise($_GET["region"]);
-        $grapeVariety = sanitise($_GET["grape_variety"]);
-        $minYear = sanitise($_GET["minYear"]);
-        $maxYear = sanitise($_GET["maxYear"]);
-        $minStock = sanitise($_GET["minStock"]);
-        $minOrder = sanitise($_GET["minOrder"]);
-        $minCost = sanitise($_GET["minCost"]);
-        $maxCost = sanitise($_GET["maxCost"]);
         
         // Prepare search query
         $search = " SELECT wine.wine_id, 
