@@ -16,6 +16,15 @@ h1 {
     background-color: #DAD9E7;
 }
 
+#results th {
+    background-color: #5E3DB7;
+    color: #000;
+}
+
+#results tr.skip td {
+    background-color: #F3F2FE;
+}
+
 #search {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;

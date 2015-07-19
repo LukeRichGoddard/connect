@@ -20,6 +20,7 @@
     
     echo "<h1>Winestore Search Results</h1>";
     if(isset($results)) {
+        $skipRow = false;
         
         // Output results
         echo "<table id=\"results\">";
@@ -37,7 +38,13 @@
         
         // loop over results
         foreach ($results as $result) {
-            echo "<tr>";
+            if($skipRow) {
+                echo "<tr class=\"skip\">";
+                $skipRow = false;
+            } else {
+                echo "<tr>";
+                $skipRow = true;
+            }
             echo "<td>{$result["wine_name"]}</td>";
             echo "<td>{$result["wine_variety"]}</td>";
             echo "<td>{$result["year"]}</td>";
