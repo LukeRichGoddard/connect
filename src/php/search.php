@@ -108,7 +108,11 @@
         <td>From <input type="text" name="minCost" size="8"/> to <input type="text" name="maxCost" size="8" /></td>
       </tr>
       <tr>
-        <td colspan="2"><input type="submit" value="Search" /></td>
+        <td colspan="2">
+          <div id="centerBtn">
+            <input type="submit" value="Search" id="btn" />
+          </div>
+        </td>
       </tr>
     </table>
   </form>

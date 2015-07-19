@@ -44,3 +44,11 @@ h1 {
     text-align: right;
     font-family: "Courier New", Courier, Fixed, monospace;
 }
+
+.centerBtn {
+    text-align: center;
+}
+
+.btn {
+    width: 150px;
+}
