@@ -66,36 +66,56 @@
 ?>
   <h1>Search Winestore</h1>
   <form action="answer.php" method="GET">
-    <br />Wine name: <input type="text" name="wineName" value="All" />
-    <br />(type All for all wines)
-    
-    <br />Winery: <input type="text" name="wineryName" value="All" />
-    <br />(type All for all wineries)
-    
-    <br />Region:
-    <?php buildRegionMenu($dbh); ?>
-    
-    <br />Grape Variety:
-    <?php buildGrapeMenu($dbh); ?>
-    
-    <br />Year:
-    From <input type="text" name="minYear" value="" />
-    to <input type="text" name="maxYear" value="" />
-    <br />
-    
-    <br />Minimum in stock: <input type="text" name="minStock" value="" />
-    <br />
-    
-    <br />Minimum ordered: <input type="text" name="minOrder" value="" />
-    <br />
-    
-    <br />Price range:
-    From $<input type="text" name="minCost" value="" />
-    to $<input type="text" name="maxCost" value="" />
-    
-    <br /><input type="submit" value="Search" />
+    <table id="search">
+      <tr>
+        <td>Wine name:</td>
+        <td colspan="3"><input type="text" name="wineName" value="All" /></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="3">(type All for all wines)</td>
+      </tr> 
+      <tr>
+        <td>Winery:</td>
+        <td colspan="3"><input type="text" name="wineryName" value="All" /></td>
+      </tr>   
+      <tr>
+        <td></td>
+        <td colspan="3">(type All for all wineries)</td>
+      </tr> 
+      <tr>
+        <td>Region:</td>
+        <td colspan="3"><?php buildRegionMenu($dbh); ?></td>
+      </tr>   
+      <tr>
+        <td>Grape Variety:</td>
+        <td colspan="3"><?php buildGrapeMenu($dbh); ?></td>
+      </tr>   
+      <tr>
+        <td>Year: From </td>
+        <td><input type="text" name="minYear" value="" /></td>
+        <td> to </td>
+        <td><input type="text" name="maxYear" value="" /></td>
+      </tr>
+      <tr>
+        <td>Minimum in stock: </td>
+        <td colspan="3"><input type="text" name="minStock" value="" /></td>
+      </tr>
+      <tr>
+        <td>Minimum ordered: </td>
+        <td colspan="3"><input type="text" name="minOrder" value="" /></td>
+      </tr>
+      <tr>
+        <td>Price range: From </td>
+        <td><input type="text" name="minCost" value="" /></td>
+        <td> to </td>
+        <td><input type="text" name="maxCost" value="" /></td>
+      </tr>
+      <tr>
+        <td colspan="4"><input type="submit" value="Search" /></td>
+      </tr>
+    </table>
   </form>
-  <br />
 <?php 
     // Close database connection
     $dbh = null;

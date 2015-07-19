@@ -18,6 +18,7 @@
         }
     }
     
+    echo "<h1>Winestore Search Results</h1>";
     if(isset($results)) {
         
         // Output results
