@@ -1,6 +1,20 @@
 <?php
     require_once('common.php');
     
+    // Recreate array from cache
+    // Based on code found at http://stackoverflow.com/questions/15746138/
+    if(isset($_GET["query"]) {
+        $queryChecksum = sanitise($_GET["query"]);
+        $cacheFile = "~/cache/{$queryChecksum}.data";
+        
+        // Load data from cache
+        if(file_exists($cacheFile)) {
+            $results = unserialize($cacheFile); 
+        } else {
+            fatalError("Query cache not found");
+        }
+    }
+    
     if(isset($_GET["r"])) {
         
         // Output results
