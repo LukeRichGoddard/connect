@@ -1,6 +1,9 @@
 <?php
     require_once('common.php');
     
+    // Header
+    include('../html/header.html');
+    
     // Recreate array from cache
     // Based on code found at http://stackoverflow.com/questions/15746138/
     if(isset($_GET["query"])) {
@@ -51,4 +54,7 @@
     } else {
         print("No results");
     }
+    
+    // Footer
+    include('../html/footer.html');
 ?>
